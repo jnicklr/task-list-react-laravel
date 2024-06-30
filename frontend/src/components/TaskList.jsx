@@ -20,7 +20,7 @@ function TaskList() {
     <ul>
         {list ? (list.map((item) => (
             <li key={item.id}>
-                <Link to={`/task/${item.id}`} className={item.status && 'line-through'} >{item.title}</Link>
+                <Link to={`/task/${item.id}`} className={item.status ? 'line-through' : ''} >{item.title}</Link>
             </li>
         ))) : (<li>There are no tasks!</li>)}
     </ul>

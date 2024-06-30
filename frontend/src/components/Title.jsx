@@ -2,7 +2,7 @@ import React from 'react'
 
 function Title({title}) {
   return (
-    <h1 class="mb-4 text-2xl">{title}</h1>
+    <h1 className="mb-4 text-2xl">{title}</h1>
   )
 }
 

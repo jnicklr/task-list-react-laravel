@@ -1,6 +1,7 @@
 import Title from '../components/Title'
 import { Link } from 'react-router-dom'
 import { useParams } from 'react-router-dom'
+import Button from '../components/Button';
 
 function Task() {
     const {id} = useParams();
@@ -34,6 +35,20 @@ function Task() {
           : 
           ( <span className="font-medium text-green-500">Not Completed!</span> )}
         </p>
+
+        <div className="flex gap-2">
+          <Link to='/' className='btn'>Edit Task</Link>
+
+          <Button action={(e) => {
+            e.preventDefault();
+            console.log("Marked")
+          }} text={item.status ? 'Mark as not completed' : 'Mark as completed'} />
+
+          <Button action={(e) => {
+            e.preventDefault();
+            console.log("Deleted")
+          }} text="Delete Task" />
+        </div>
     </>
   )
 }

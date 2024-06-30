@@ -7,6 +7,7 @@ import { createBrowserRouter, RouterProvider  } from 'react-router-dom'
 import Home from './pages/Home.jsx'
 import Create from './pages/Create.jsx'
 import Task from './pages/Task.jsx'
+import Edit from './pages/Edit.jsx'
 
 const router = createBrowserRouter([
   {
@@ -27,7 +28,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/task/edit/:id',
-        element: <Create/>,
+        element: <Edit/>,
       },
     ]
   }
