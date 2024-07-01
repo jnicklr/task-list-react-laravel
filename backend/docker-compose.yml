@@ -51,6 +51,25 @@ services:
                 - '-p${DB_PASSWORD}'
             retries: 3
             timeout: 5s
+    dbgate:
+        image: dbgate/dbgate
+        restart: always
+        ports:
+            - '3000:3000'
+        volumes:
+            - 'dbgate-data:/root/.dbgate'
+        depends_on:
+            - mysql
+        environment:
+            CONNECTIONS: con1
+            LABEL_con1: TaskDB
+            SERVER_con1: mysql
+            USER_con1: '${DB_USERNAME}'
+            PASSWORD_con1: '${DB_PASSWORD}'
+            PORT_con1: '${DB_PORT}'
+            ENGINE_con1: mysql@dbgate-plugin-mysql
+        networks:
+            - sail
     redis:
         image: 'redis:alpine'
         ports:
@@ -104,6 +123,8 @@ networks:
     sail:
         driver: bridge
 volumes:
+    dbgate-data:
+        driver: local
     sail-mysql:
         driver: local
     sail-redis:
